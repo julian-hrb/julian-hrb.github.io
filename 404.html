@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Indabox</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #071a52; color: #eaf2ff;
+         font-family: -apple-system, "Segoe UI", Roboto, sans-serif; text-align: center; padding: 24px; box-sizing: border-box; }
+  main { max-width: 420px; }
+  h1 { font-size: 1.6rem; margin: 0 0 8px; }
+  p { color: #b9c7ea; line-height: 1.5; }
+  a.button { display: inline-block; margin-top: 16px; padding: 14px 24px; border-radius: 16px; background: #22d3ee; color: #061a3a;
+             font-weight: 700; text-decoration: none; }
+  code { color: #8fe3ff; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Esta etiqueta es de Indabox</h1>
+  <p id="msg">Abriendo Indabox…</p>
+  <a id="open" class="button" href="#">Abrir en Indabox</a>
+  <p id="hint" hidden>Si no se abrió, instalá Indabox en este teléfono y volvé a escanear la etiqueta.</p>
+</main>
+<script>
+  // Any /l/<id> path lands here (GitHub Pages serves 404.html for unknown paths).
+  var m = location.pathname.match(/^\/l\/([A-Za-z0-9-]{1,64})$/);
+  var open = document.getElementById('open');
+  if (m) {
+    var link = 'indabox://open/l/' + m[1];
+    open.href = link;
+    // The app's own scheme opens it even where the https link isn't verified yet.
+    setTimeout(function () { location.href = link; }, 300);
+    setTimeout(function () { document.getElementById('hint').hidden = false;
+                             document.getElementById('msg').textContent = 'Si Indabox está instalada, ya debería estar abierta.'; }, 2500);
+  } else {
+    document.getElementById('msg').textContent = 'Esta dirección no corresponde a ninguna etiqueta.';
+    open.hidden = true;
+  }
+</script>
+</body>
+</html>

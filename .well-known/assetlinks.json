@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.julianhrb.indabox",
+      "sha256_cert_fingerprints": [
+        "AA:6C:7A:F2:5B:44:77:DF:54:B4:9B:6E:78:52:AE:64:6C:62:97:3B:42:42:38:3D:7D:3C:A2:6A:27:A5:A4:2B"
+      ]
+    }
+  }
+]
